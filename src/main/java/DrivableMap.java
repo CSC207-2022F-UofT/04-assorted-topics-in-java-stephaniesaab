@@ -15,7 +15,7 @@ class DrivableMap {
     HashMap<String, Drivable> drivable_map;
 
     /**
-     * A generic constructor that initializes car_map
+     * A generic constructor that initializes drivable_map
      * as an empty HashMap.
      */
     public DrivableMap() {
@@ -28,8 +28,20 @@ class DrivableMap {
      *       Return true if the Drivable was added to drivable_map.
      */
 
+    /**
+     * Add the given String identifier and Drivable object as a key value pair to drivable_map, if they're not there already.
+     * Return true if the Drivable was added to drivable_map.
+     */
 
-
+    public boolean addDrivable(String identifier, Drivable object) {
+        if (drivable_map.containsKey(identifier)) {
+            return false;
+        }
+        else {
+            drivable_map.put(identifier, object);
+            return true;
+        }
+    }
 
     /* TODO: Write a method named hasFasterThan that takes an int (a speed)
      *       and returns true iff there is at least one item in drivable_map
@@ -38,14 +50,36 @@ class DrivableMap {
      * iterate through drivable_map.
      */
 
+    /**
+     * Return true iff there is at least one item in drivable_map that has a maxSpeed >= the given speed.
+     */
 
-
-
+    public boolean hasFasterThan(int speed) {
+        for (Drivable value: drivable_map.values()) {
+            if (value.getMaxSpeed() >= speed) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /* TODO: Write a method named getTradable that takes no arguments and
      *       returns a List containing all of the Tradable items in
      *       drivable_map.
      */
+    /**
+     * Return a List containing all the Tradable items in drivable_map.
+     */
+    public List<Tradable> getTradable() {
+        ArrayList<Tradable> tradables = new ArrayList<Tradable>();
+        for (Drivable value: drivable_map.values()) {
+            if (value instanceof Tradable) {
+                tradables.add((Tradable) value);
+            }
+        }
+        return tradables;
+    }
+
 
 
 

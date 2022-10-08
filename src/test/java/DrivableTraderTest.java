@@ -19,7 +19,7 @@ public class DrivableTraderTest {
         assertEquals(Tradable.MISSING_PRICE, dt.getSellingPrice(u));
     }
 
-    @Test(timeout = 50)
+    @Test(timeout = 500)
     public void TestGetSellingPriceVaryingSpeed() {
         Horse h = new Horse();
         h.upgradeSpeed();
